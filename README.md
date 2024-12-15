@@ -1,6 +1,6 @@
 # Overview
 
-This is a C# app checks if a given string has matching brackets. It supports various types of brackets including `()`, `{}`, `[]`, and `<>`. The app can be used via a console interface.
+Checks if a given string has matching brackets. It supports various types of brackets including `()`, `{}`, `[]`, and `<>`. The app can be used via a console interface, and can be built and run using Docker.
 
 ## Project Structure
 
@@ -18,6 +18,7 @@ BracketValidatorApp/
 │
 ├── .gitignore                              # Git ignore file to exclude unnecessary files
 ├── BracketValidatorApp.sln                 # Solution file
+├── Dockerfile                              # Docker Image
 ├── README.md                               # Project README
 ```
 
@@ -54,13 +55,33 @@ Run the application via the command line:
 dotnet run --project src
 ```
 
+### Timekeeping
+
+The program file keeps track of time to measure program efficiency. The ellapsed time is logged each time the BracketMatcher's `HasMatchingBrackets` method is called.
+
 ### Example
 
 ```bash
 Enter a string to check for matching brackets:
 <{[()]}>
 
-Brackets are correctly matched!
+Time taken to check brackets: 10 ms
+👍 Brackets are correctly matched.
+```
+
+## Docker
+
+Alternatively, you can run the application with Docker. Docker is included in this application in order to future-proof this application, streamlining setup, portability, and deployment. 
+
+To build the app using Docker, ensure Docker Desktop is open and run the following in the console:
+
+```bash
+docker build -t bracket-validator-app .
+```
+
+Then, run the image interactively using the following command:
+```bash
+docker run -it bracket-validator-app
 ```
 
 ## Running Tests

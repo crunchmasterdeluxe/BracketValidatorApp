@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BracketValidatorApp
 {
@@ -16,7 +17,7 @@ namespace BracketValidatorApp
         {
             Console.WriteLine("Enter a string to check for matching brackets:");
 
-            // Wanted to handle null input scenario
+            // Handle null or empty input scenario
             string? input = Console.ReadLine();
 
             if (string.IsNullOrEmpty(input))
@@ -25,9 +26,15 @@ namespace BracketValidatorApp
             }
             else
             {
+                Stopwatch stopwatch = Stopwatch.StartNew();
+
                 bool result = BracketMatcher.HasMatchingBrackets(input);
 
-                Console.WriteLine(result ? "Brackets are correctly matched!" : "Brackets are mismatched.");
+                stopwatch.Stop();
+
+                Console.WriteLine("Time taken to check brackets: {0} ms", stopwatch.ElapsedMilliseconds);
+
+                Console.WriteLine(result ? "👍 Brackets are correctly matched." : "👎 Brackets are mismatched.");
             }
         }
     }
