@@ -1,0 +1,12 @@
+# Ignore build output directories
+**/bin/
+**/obj/
+
+# User-specific files
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
